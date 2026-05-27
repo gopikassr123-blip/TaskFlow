@@ -11,8 +11,17 @@ import axios from "axios";
 function Dashboard() {
 
   const [tasks, setTasks] = useState([]);
+  const [search, setSearch] = useState("");
+  const [filterStatus, setFilterStatus] = useState("All");
+  const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
+
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme) {
+      setTheme(savedTheme);
+    }
 
     const token = localStorage.getItem("token");
 
@@ -27,6 +36,16 @@ function Dashboard() {
     }
 
   }, []);
+
+  const toggleTheme = () => {
+
+    const newTheme = theme === "dark" ? "light" : "dark";
+
+    setTheme(newTheme);
+
+    localStorage.setItem("theme", newTheme);
+
+  };
 
   const fetchTasks = async () => {
 
@@ -48,8 +67,20 @@ function Dashboard() {
 
   };
 
+  const filteredTasks = tasks.filter((task) => {
+
+    const matchesSearch =
+      task.title.toLowerCase().includes(search.toLowerCase());
+
+    const matchesStatus =
+      filterStatus === "All" || task.status === filterStatus;
+
+    return matchesSearch && matchesStatus;
+
+  });
+
   return (
-    <div className="dashboardPage">
+    <div className={`dashboardPage ${theme === "light" ? "lightMode" : ""}`}>
 
       <aside className="sidebar">
 
@@ -84,6 +115,13 @@ function Dashboard() {
 
       <main className="dashboardMain">
 
+        <button
+          onClick={toggleTheme}
+          className="themeToggleBtn"
+        >
+          {theme === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode"}
+        </button>
+
         <h1>Dashboard</h1>
 
         <p className="welcome">
@@ -96,10 +134,35 @@ function Dashboard() {
           </button>
         </Link>
 
+        <div className="searchFilterBox">
+
+          <input
+            type="text"
+            placeholder="🔍 Search Tasks..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="searchInput"
+          />
+
+          <select
+            value={filterStatus}
+            onChange={(e) => setFilterStatus(e.target.value)}
+            className="filterSelect"
+          >
+
+            <option>All</option>
+            <option>Pending</option>
+            <option>In Progress</option>
+            <option>Completed</option>
+
+          </select>
+
+        </div>
+
         <div className="stats">
 
           <div className="statCard">
-            <h3>{tasks.length}</h3>
+            <h3>{filteredTasks.length}</h3>
             <p>Total Tasks</p>
           </div>
 
@@ -110,7 +173,7 @@ function Dashboard() {
           <h2>Recent Tasks</h2>
 
           {
-            tasks.map((task) => (
+            filteredTasks.map((task) => (
               <TaskCard
                 key={task._id}
                 id={task._id}
