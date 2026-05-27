@@ -14,7 +14,7 @@ function CreateTask() {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        `http://localhost:5000/api/tasks?token=${token}`,
+        `https://taskflow-production-38c8.up.railway.app/api/tasks?token=${token}`,
         {
           title,
           status,

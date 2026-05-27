@@ -35,7 +35,7 @@ function Dashboard() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        `http://localhost:5000/api/tasks?token=${token}`
+        `https://taskflow-production-38c8.up.railway.app/api/tasks?token=${token}`
       );
 
       setTasks(response.data);
@@ -55,10 +55,21 @@ function Dashboard() {
 
         <h2>TaskFlow</h2>
 
-        <p>Dashboard</p>
-        <p>Projects</p>
-        <p>Tasks</p>
-        <p>Team</p>
+        <Link to="/dashboard">
+          <p>Dashboard</p>
+        </Link>
+
+        <Link to="/projects">
+          <p>Projects</p>
+        </Link>
+
+        <Link to="/tasks">
+          <p>Tasks</p>
+        </Link>
+
+        <Link to="/team">
+          <p>Team</p>
+        </Link>
 
         <p
           onClick={() => {
