@@ -1,0 +1,57 @@
+.homePage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  height: 70px;
+  padding: 0 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar h2 {
+  color: #38bdf8;
+}
+
+.navbar a {
+  margin-left: 30px;
+  color: #cbd5e1;
+  text-decoration: none;
+}
+
+.heroSection {
+  height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 80px;
+}
+
+.heroSection h1 {
+  font-size: 64px;
+  max-width: 650px;
+  margin-bottom: 20px;
+}
+
+.heroSection p {
+  max-width: 600px;
+  color: #cbd5e1;
+  font-size: 20px;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.heroSection button {
+  width: 180px;
+  padding: 14px;
+  border: none;
+  border-radius: 30px;
+  background: #38bdf8;
+  color: #0f172a;
+  font-weight: bold;
+  cursor: pointer;
+}

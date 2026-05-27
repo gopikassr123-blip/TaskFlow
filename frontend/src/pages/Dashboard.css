@@ -1,0 +1,70 @@
+.dashboardPage {
+  min-height: 100vh;
+  display: flex;
+  background: #0f172a;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  width: 240px;
+  background: #111827;
+  padding: 30px;
+}
+
+.sidebar h2 {
+  color: #38bdf8;
+  margin-bottom: 40px;
+}
+
+.sidebar p {
+  margin: 22px 0;
+  color: #cbd5e1;
+}
+
+.dashboardMain {
+  flex: 1;
+  padding: 40px;
+}
+
+.welcome {
+  color: #cbd5e1;
+}
+
+.createBtn {
+  margin-top: 25px;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 12px;
+  background: #38bdf8;
+  font-weight: bold;
+}
+
+.stats {
+  display: flex;
+  gap: 25px;
+  margin-top: 35px;
+}
+
+.statCard {
+  width: 220px;
+  padding: 25px;
+  border-radius: 18px;
+  background: #1e293b;
+}
+
+.statCard h3 {
+  color: #38bdf8;
+  font-size: 36px;
+}
+
+.taskSection {
+  margin-top: 40px;
+}
+
+.taskCard {
+  margin-top: 18px;
+  padding: 22px;
+  border-radius: 18px;
+  background: #1e293b;
+}
